@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
+import { Link } from "react-router-dom";
 
 function Popular() {
   const [popular, setPopular] = useState([]);
@@ -16,7 +17,9 @@ function Popular() {
     if (check) {
       setPopular(JSON.parse(check));
     } else {
-      const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`);
+      const api = await fetch(
+        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
+      );
 
       const data = await api.json();
 
@@ -44,10 +47,11 @@ function Popular() {
             return (
               <SplideSlide>
                 <Card>
-                  <p>{recipe.title}</p>
-                  <img src={recipe.image} alt={recipe.title} />
+                  <Link to={"/recipe/" + recipe.id}>
+                    <p>{recipe.title}</p>
+                    <img src={recipe.image} alt={recipe.title} />
+                  </Link>
                 </Card>
-                <Gradient />
               </SplideSlide>
             );
           })}
@@ -91,14 +95,6 @@ const Card = styled.div`
     height: 100%;
     object-fit: cover;
   }
-`;
-
-const Gradient = styled.div`
-  z-index: 3;
-  position: abolute;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
 `;
 
 export default Popular;
