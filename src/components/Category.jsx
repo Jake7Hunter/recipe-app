@@ -6,25 +6,25 @@ import { GiNoodles, GiChopsticks } from "react-icons/gi";
 function Category() {
   return (
     <List>
-      <NavLink to="/cuisine/italian">
+      <SLink to="/cuisine/italian">
         <FaPizzaSlice />
         <h4>Italian</h4>
-      </NavLink>
+      </SLink>
 
-      <NavLink to="/cuisine/american">
+      <SLink to="/cuisine/american">
         <FaHamburger />
         <h4>American</h4>
-      </NavLink>
+      </SLink>
 
-      <NavLink to="/cuisine/thai">
+      <SLink to="/cuisine/thai">
         <GiNoodles />
         <h4>Thai</h4>
-      </NavLink>
+      </SLink>
 
-      <NavLink to="/cuisine/japanese">
+      <SLink to="/cuisine/japanese">
         <GiChopsticks />
         <h4>Japanese</h4>
-      </NavLink>
+      </SLink>
     </List>
   );
 }
@@ -34,5 +34,16 @@ const List = styled.div`
     justify-content: center;
     margin 2rem 0;
 `;
+
+const SLink = styled(NavLink)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin-right: 2rem;
+  text-decoration: none;
+  cursor: pointer;
+`
 
 export default Category;
