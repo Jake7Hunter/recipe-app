@@ -1,5 +1,14 @@
+import { Routes, Route } from "react-router-dom";
+import Home from "./Home"
+import Cuisine from "./Cuisine";
+
 function Pages() {
-    return <h1>Hi</h1>
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/cuisine/:type" element={<Cuisine />} />
+    </Routes>
+  );
 }
 
 export default Pages;
